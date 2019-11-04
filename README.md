@@ -5,3 +5,4 @@ Notification app  with AWS
 # Todo  
 Make Server  
 Connect to Server  
+Add Notification bar
