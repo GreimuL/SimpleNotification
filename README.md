@@ -6,5 +6,5 @@ Notification app  with AWS
 <img src="./img/DB_structure.PNG" width="100%" height="100%">   
 
 # Todo  
-Implement get function
+Implement get function   
 Implement notification bar
