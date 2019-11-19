@@ -33,6 +33,7 @@ class DescriptionActivity:AppCompatActivity(){
                 userView.text = showData.user
                 descriptionView.text = showData.description
             }
+            override fun serveLastNotification(data: NotificationData?) {}
             override fun serveAllNotification(data: List<NotificationData>?) {}
             override fun getInsertID(id:Int) {}
             override fun onFail() {}

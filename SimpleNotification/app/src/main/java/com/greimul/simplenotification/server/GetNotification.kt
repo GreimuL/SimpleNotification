@@ -48,3 +48,19 @@ fun getAllNotification(listener:GetListener){
         }
     })
 }
+fun getLastNotification(listener:GetListener){
+    val retrofit = Retrofit.Builder().baseUrl(homeURL).addConverterFactory(GsonConverterFactory.create()).build()
+    val service = retrofit.create(RetrofitInterface::class.java)
+    service.getLastNotification().enqueue(object:Callback<NotificationData>{
+        override fun onResponse(
+            call: Call<NotificationData>,
+            response: Response<NotificationData>
+        ) {
+            listener.serveLastNotification(response.body())
+            Log.d("getLast","good")
+        }
+        override fun onFailure(call: Call<NotificationData>, t: Throwable) {
+            Log.d("getLast","fail")
+        }
+    })
+}

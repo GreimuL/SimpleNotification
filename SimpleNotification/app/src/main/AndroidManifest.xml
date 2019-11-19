@@ -22,6 +22,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
+        <service
+            android:name=".bgservice.NotificationPullService"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

@@ -6,5 +6,6 @@ interface GetListener {
     fun serveAllNotification(data:List<NotificationData>?)
     fun serveNotification(data:NotificationData?)
     fun getInsertID(id:Int)
+    fun serveLastNotification(data:NotificationData?)
     fun onFail()
 }

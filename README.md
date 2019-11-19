@@ -5,6 +5,7 @@ Notification app  with AWS
 # DB Structure   
 <img src="./img/DB_structure.PNG" width="100%" height="100%">   
 
-# Todo  
-Implement get function   
+# Todo    
 Implement notification bar
+Manage Client Notification Data by Room-database(SQL)   
+        ->Maybe room is more effective?

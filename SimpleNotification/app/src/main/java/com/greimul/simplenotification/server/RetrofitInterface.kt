@@ -6,23 +6,24 @@ import okhttp3.ResponseBody
 import okio.Utf8
 import org.json.JSONObject
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface RetrofitInterface {
-    @GET("insert.php")
-    fun postNotification(@Query("title") title:String,
-                         @Query("user") user:String,
-                         @Query("description") description:String
-    ): Call<idData>
+    @FormUrlEncoded
+    @POST("insert.php")
+    fun postNotification(@FieldMap data:HashMap<String,String>): Call<idData>
 
-    @POST("give_all_notification.php")
+    @GET("give_all_notification.php")
     fun getAllNotification():Call<List<NotificationData>>
 
-    @GET("delete.php")
-    fun deleteNotification(@Query("id") id:Int):Call<ResponseBody>
+    @FormUrlEncoded
+    @POST("delete.php")
+    fun deleteNotification(@Field("id") id:Int):Call<ResponseBody>
 
-    @GET("give_notification.php")
-    fun getNotification(@Query("id") id:Int):Call<NotificationData>
+    @FormUrlEncoded
+    @POST("give_notification.php")
+    fun getNotification(@Field("id") id:Int):Call<NotificationData>
+
+    @GET("give_last_notification.php")
+    fun getLastNotification():Call<NotificationData>
 }

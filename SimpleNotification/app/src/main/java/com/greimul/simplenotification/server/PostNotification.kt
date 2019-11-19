@@ -18,7 +18,12 @@ fun postNotification(title:String,user:String,description:String,listener:GetLis
     val retrofit = Retrofit.Builder().baseUrl(homeURL).addConverterFactory(GsonConverterFactory.create()).build()
     val service = retrofit.create(RetrofitInterface::class.java)
 
-    service.postNotification(title,user,description).enqueue(object: Callback<idData> {
+    val data = HashMap<String,String>()
+    data["title"] = title
+    data["user"] = user
+    data["description"] =description
+
+    service.postNotification(data).enqueue(object: Callback<idData> {
         override fun onResponse(call: Call<idData>, response: Response<idData>) {
             val idData = response.body()?:idData(0)
             listener.getInsertID(idData.id)

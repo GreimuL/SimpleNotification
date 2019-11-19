@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.greimul.simplenotification.bgservice.NotificationPullService
 import com.greimul.simplenotification.server.GetListener
 import com.greimul.simplenotification.server.getAllNotification
 import com.greimul.simplenotification.server.getNotification
@@ -20,12 +21,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
+var notificationArray:MutableList<NotificationData> = mutableListOf()
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView:RecyclerView
     private lateinit var viewManager:RecyclerView.LayoutManager
     private lateinit var viewAdapter:NotificationViewAdapter
-    private var notificationArray:MutableList<NotificationData> = mutableListOf()
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -36,6 +38,11 @@ class MainActivity : AppCompatActivity() {
                 Log.d("isdel", "$deletePosition")
             }
         }
+    }
+
+    override fun onResume(){
+        super.onResume()
+        getAllData()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +67,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         getAllData()
+
+        Intent(this,NotificationPullService::class.java).also{
+            startService(it)
+        }
+
         addNotificationButton.setOnClickListener {
             val dialog = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.dialog_add_notification,null)
@@ -94,6 +106,7 @@ class MainActivity : AppCompatActivity() {
                 insertID =id
                 getData(insertID)
             }
+            override fun serveLastNotification(data: NotificationData?) {}
             override fun serveAllNotification(data: List<NotificationData>?) {}
             override fun serveNotification(data: NotificationData?) {}
             override fun onFail() {}
@@ -107,6 +120,8 @@ class MainActivity : AppCompatActivity() {
                returnData = data?: nullData
                insertItem(returnData)
            }
+
+           override fun serveLastNotification(data: NotificationData?) {}
            override fun serveAllNotification(data: List<NotificationData>?) {}
            override fun getInsertID(id:Int) {}
            override fun onFail() {}
@@ -123,6 +138,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 Log.d("Array","$notificationArray")
             }
+
+            override fun serveLastNotification(data: NotificationData?) {}
             override fun serveNotification(data: NotificationData?) {}
             override fun getInsertID(id:Int) {}
             override fun onFail() {}
