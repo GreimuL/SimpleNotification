@@ -1,6 +1,6 @@
-# SimpleNotification   
-kotlin, php, retrofit2, AWS   
+kotlin, php, retrofit2, AWS  
 
+# SimpleNotification    
 Notification app with AWS   
 
 # ScreenShots  
