@@ -11,7 +11,8 @@ Check new notification from server periodically at background(Service).
 If there is new notification at server, show status bar.
 
 # ScreenShots  
-<img src="./img/Main.jpg" width="30%" height="30%"><img src="./img/addNot.jpg" width="30%" height="30%"><img src="./img/notification.jpg" width="30%" height="30%">     
+<img src="./img/Main.jpg" width="30%" height="30%"><img src="./img/addNot.jpg" width="30%" height="30%"><img src="./img/notification.jpg" width="30%" height="30%">  
+Status Bar   
 <img src="./img/statusBar.jpg" width="30%" height="30%">   
 
 # DB Structure   
