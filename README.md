@@ -4,11 +4,11 @@ kotlin, php, retrofit2, AWS, MySql, Service
 Notification app with AWS   
    
 # Description   
-Push notification to server.
-Delete notification from server.
+Push notification to server.   
+Delete notification from server.   
 
-Check new notification from server periodically at background(Service).
-If there is new notification at server, show status bar.
+Check new notification from server periodically at background(Service).   
+If there is new notification at server, show status bar.   
 
 # ScreenShots  
 <img src="./img/Main.jpg" width="30%" height="30%"><img src="./img/addNot.jpg" width="30%" height="30%"><img src="./img/notification.jpg" width="30%" height="30%">  
