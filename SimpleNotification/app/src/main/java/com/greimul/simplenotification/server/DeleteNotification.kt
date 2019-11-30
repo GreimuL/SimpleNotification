@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 fun deleteNotification(id:Int){
-    val retrofit = Retrofit.Builder().baseUrl(homeURL).addConverterFactory(GsonConverterFactory.create()).build()
+    val retrofit = Retrofit.Builder().baseUrl(HOME_URL).addConverterFactory(GsonConverterFactory.create()).build()
     val service = retrofit.create(RetrofitInterface::class.java)
     service.deleteNotification(id).enqueue(object: Callback<ResponseBody> {
         override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {

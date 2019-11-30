@@ -19,7 +19,7 @@ import java.net.URL
 import java.nio.Buffer
 
 fun getNotification(id:Int,listener: GetListener):NotificationData?{
-    val retrofit = Retrofit.Builder().baseUrl(homeURL).addConverterFactory(GsonConverterFactory.create()).build()
+    val retrofit = Retrofit.Builder().baseUrl(HOME_URL).addConverterFactory(GsonConverterFactory.create()).build()
     val service = retrofit.create(RetrofitInterface::class.java)
     service.getNotification(id).enqueue(object: Callback<NotificationData> {
         override fun onResponse(call: Call<NotificationData>, response: Response<NotificationData>) {
@@ -33,7 +33,7 @@ fun getNotification(id:Int,listener: GetListener):NotificationData?{
     return null
 }
 fun getAllNotification(listener:GetListener){
-    val retrofit = Retrofit.Builder().baseUrl(homeURL).addConverterFactory(GsonConverterFactory.create()).build()
+    val retrofit = Retrofit.Builder().baseUrl(HOME_URL).addConverterFactory(GsonConverterFactory.create()).build()
     val service = retrofit.create(RetrofitInterface::class.java)
     service.getAllNotification().enqueue(object:Callback<List<NotificationData>>{
         override fun onResponse(
@@ -49,7 +49,7 @@ fun getAllNotification(listener:GetListener){
     })
 }
 fun getLastNotification(listener:GetListener){
-    val retrofit = Retrofit.Builder().baseUrl(homeURL).addConverterFactory(GsonConverterFactory.create()).build()
+    val retrofit = Retrofit.Builder().baseUrl(HOME_URL).addConverterFactory(GsonConverterFactory.create()).build()
     val service = retrofit.create(RetrofitInterface::class.java)
     service.getLastNotification().enqueue(object:Callback<NotificationData>{
         override fun onResponse(

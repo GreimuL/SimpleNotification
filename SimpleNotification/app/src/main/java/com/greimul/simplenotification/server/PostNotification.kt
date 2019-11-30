@@ -15,7 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 fun postNotification(title:String,user:String,description:String,listener:GetListener){
-    val retrofit = Retrofit.Builder().baseUrl(homeURL).addConverterFactory(GsonConverterFactory.create()).build()
+    val retrofit = Retrofit.Builder().baseUrl(HOME_URL).addConverterFactory(GsonConverterFactory.create()).build()
     val service = retrofit.create(RetrofitInterface::class.java)
 
     val data = HashMap<String,String>()

@@ -2,7 +2,6 @@ package com.greimul.simplenotification.bgservice
 
 import android.util.Log
 import com.greimul.simplenotification.NotificationData
-import com.greimul.simplenotification.notificationArray
 import com.greimul.simplenotification.server.GetListener
 import com.greimul.simplenotification.server.getAllNotification
 import com.greimul.simplenotification.server.getLastNotification

@@ -1,6 +1,10 @@
 package com.greimul.simplenotification
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -49,6 +53,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val deletePosition = intent.getIntExtra("pos",-1)
+
+        createNotificationChannel()
+
         viewManager = LinearLayoutManager(this).apply {
             stackFromEnd = true
         }
@@ -67,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         getAllData()
-
+        recyclerView.scrollToPosition(notificationArray.size-1)
         Intent(this,NotificationPullService::class.java).also{
             startService(it)
         }
@@ -144,5 +151,16 @@ class MainActivity : AppCompatActivity() {
             override fun getInsertID(id:Int) {}
             override fun onFail() {}
         })
+    }
+
+    private fun createNotificationChannel(){
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel("TestCH", "TestName", importance).apply {
+                description = "Test"
+            }
+            val notificationManager:NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 }
